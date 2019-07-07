@@ -12,6 +12,7 @@ export type TicketListDispatchProps = {
 export type TicketListStateProps = {
 	tickets: Ticket[];
 	ticketsFetchStatus: FetchStatus;
+	rate: number;
 };
 
 export type TicketListOwnProps = {};

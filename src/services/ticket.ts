@@ -2,7 +2,6 @@ import {request} from './request';
 
 import {TicketDto} from '../types/dto';
 
-
 import {mapTicket} from '../mappers';
 
 /**

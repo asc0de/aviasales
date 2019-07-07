@@ -1,3 +1,7 @@
 .tickets-list {
     flex: 1 1 100%;
 }
+
+.loader-container {
+    margin-top: 10vh;
+}

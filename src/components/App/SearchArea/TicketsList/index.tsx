@@ -12,7 +12,8 @@ import {TicketService} from '../../../../services';
 
 import {setTickets, setTicketsFetchStatus} from '../../../../actions/ticket';
 
-import {getSortedAndFilteredTickets, getTicketsFetchStatus} from '../../../../reducers/ticket';
+import {getSortedAndFilteredTickets, getTicketsCurrency, getTicketsFetchStatus} from '../../../../reducers/ticket';
+import {getCurrencyRate} from '../../../../reducers/currency';
 
 import {FetchStatus} from '../../../../enums/common';
 
@@ -28,7 +29,8 @@ const mapStateToProps: MapStateToProps<
 	CommonState
 > = (state: CommonState) => ({
 	tickets: getSortedAndFilteredTickets(state, 'price'),
-	ticketsFetchStatus: getTicketsFetchStatus(state)
+	ticketsFetchStatus: getTicketsFetchStatus(state),
+	rate: getCurrencyRate(state, getTicketsCurrency(state))
 });
 
 const mapDispatchToProps: MapDispatchToProps<TicketListDispatchProps, TicketListOwnProps> = (dispatch) =>
@@ -46,7 +48,13 @@ const mapDispatchToProps: MapDispatchToProps<TicketListDispatchProps, TicketList
 export const TicketsList = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)((({setTickets, setTicketsFetchStatus, tickets, ticketsFetchStatus}) => {
+)((({
+	setTickets,
+	setTicketsFetchStatus,
+	tickets,
+	ticketsFetchStatus,
+	rate
+}) => {
 	useEffect(() => {
 		setTicketsFetchStatus(FetchStatus.Loading);
 		TicketService.get().then((tickets) => {
@@ -59,11 +67,21 @@ export const TicketsList = connect(
 	 * Строит список билетов
 	 */
 	const buildTicketList = (tickets: Ticket[]) =>
-		tickets.map((ticket: Ticket, index: number) => <TicketComponent ticket={ticket} key={index}/>);
+		tickets.map((ticket: Ticket, index: number) => (
+			<TicketComponent
+				key={index}
+				ticket={ticket}
+				rate={rate}
+			/>
+		));
 
 	return (
 		<FlexWrapper flexDirection="column" alignItems="stretch" className={styles['tickets-list']}>
-			{isLoading(ticketsFetchStatus) && <Spinner />}
+			{isLoading(ticketsFetchStatus) && (
+				<FlexWrapper alignItems="center" className={styles['loader-container']}>
+					<Spinner />
+				</FlexWrapper>
+			)}
 			{isError(ticketsFetchStatus) && <span>Извините, что-то пошло не так :/</span>}
 			{isComplete(ticketsFetchStatus) && buildTicketList(tickets)}
 		</FlexWrapper>

@@ -2,9 +2,10 @@
  * Типы экшенов тикета
  */
 export enum TicketAction {
-	SetTickets = 'SetTickets',
-	SetTicketsFetchStatus = 'SetTicketsFetchStatus',
-	AddTicketsFilters = 'AddTicketFilters',
-	SetTicketsFilters = 'SetTicketsFilters',
-	RemoveTicketFilters = 'RemoveTicketFilters'
+	SetTickets = 'TicketAction.SetTickets',
+	SetTicketsFetchStatus = 'TicketAction.SetTicketsFetchStatus',
+	AddTicketsFilters = 'TicketAction.AddTicketFilters',
+	SetTicketsFilters = 'TicketAction.SetTicketsFilters',
+	RemoveTicketFilters = 'TicketAction.RemoveTicketFilters',
+	SetTicketsCurrency = 'TicketAction.SetTicketsCurrency'
 }

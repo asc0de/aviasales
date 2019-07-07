@@ -2,7 +2,7 @@ import {CommonState} from '../../types/states';
 import {Ticket} from '../../types/models';
 import {ClientFilter} from '../../types/common';
 
-import {FetchStatus, SortDirection} from '../../enums/common';
+import {Currency, FetchStatus, SortDirection} from '../../enums/common';
 import {ALL_HOP_FILTER_ITEMS_VALUE} from '../../components/App/SearchArea/SearchSettingsCard/HopFilters/config';
 
 import {sort} from '../../helpers';
@@ -39,13 +39,19 @@ export const getSortedAndFilteredTickets = (
 };
 
 /**
- * Возвращает состояние запроса за тикетами
+ * Возвращает состояние запроса за билетами
  */
 export const getTicketsFetchStatus = (state: CommonState): FetchStatus =>
 	state.ticket.fetchStatus;
 
 /**
- * Возвращает состояние фильтров тикетов
+ * Возвращает состояние фильтров билетов
  */
 export const getTicketFilters = (state: CommonState): ClientFilter<Ticket>[] =>
 	state.ticket.filters;
+
+/**
+ * Возвращает текущую валюту для билетов
+ */
+export const getTicketsCurrency = (state: CommonState): Currency =>
+	state.ticket.currency;

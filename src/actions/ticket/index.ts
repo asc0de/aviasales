@@ -1,9 +1,16 @@
-import {AddTicketsFilters, RemoveTicketFilters, SetTickets, SetTicketsFetchStatus, SetTicketsFilters} from './types';
+import {
+	AddTicketsFilters,
+	RemoveTicketFilters,
+	SetTickets,
+	SetTicketsCurrency,
+	SetTicketsFetchStatus,
+	SetTicketsFilters
+} from './types';
 import {Ticket} from '../../types/models';
 import {ClientFilter} from '../../types/common';
 
 import {TicketAction} from '../../enums/actions/ticket';
-import {FetchStatus} from '../../enums/common';
+import {Currency, FetchStatus} from '../../enums/common';
 
 /**
  * Устанавливает тикеты в стейт
@@ -43,4 +50,12 @@ export const addTicketsFilters = (filters: ClientFilter<Ticket>[]): AddTicketsFi
 export const removeTicketFilters = (filters: ClientFilter<Ticket>[]): RemoveTicketFilters => ({
 	type: TicketAction.RemoveTicketFilters,
 	payload: filters
+});
+
+/**
+ * Устанавливает текущую валюту тикетов
+ */
+export const setTicketsCurrency = (currency: Currency): SetTicketsCurrency => ({
+	type: TicketAction.SetTicketsCurrency,
+	payload: currency
 });

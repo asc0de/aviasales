@@ -6,14 +6,15 @@ import {ClientFilter} from '../../types/common';
 import {Ticket} from '../../types/models';
 
 import {TicketAction} from '../../enums/actions/ticket';
-import {FetchStatus} from '../../enums/common';
+import {Currency, FetchStatus} from '../../enums/common';
 
 import {TicketsActions} from '../../actions/ticket/types';
 
 const initialState: TicketState = {
 	tickets: [],
 	fetchStatus: FetchStatus.Initial,
-	filters: []
+	filters: [],
+	currency: Currency.RUB
 };
 
 /**
@@ -32,6 +33,8 @@ export const ticketReducer: Reducer<TicketState, TicketsActions> = (
 			return {...state, filters: [...state.filters, ...action.payload]};
 		case TicketAction.SetTicketsFilters:
 			return {...state, filters: [...action.payload]};
+		case TicketAction.SetTicketsCurrency:
+			return {...state, currency: action.payload};
 		case TicketAction.RemoveTicketFilters:
 			const {fields, values}: RemovedTicketFiltersData = action.payload.reduce(
 				(acc: RemovedTicketFiltersData, {field, value}: ClientFilter<Ticket>) => {

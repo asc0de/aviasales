@@ -7,9 +7,10 @@ import {Card} from '../../../../Shared/Card';
 /**
  * Карточка билета
  */
-export const Ticket: React.FC<TicketProps> = ({ticket}) => (
+export const Ticket: React.FC<TicketProps> = ({ticket, rate}) => (
 	<Card>
-		{ticket.originName}
-		{ticket.price}
+		<div>{ticket.originName}</div>
+		<div>{ticket.price * rate}</div>
+		<div>{ticket.stops}</div>
 	</Card>
 );
