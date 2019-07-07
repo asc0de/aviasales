@@ -6,9 +6,10 @@ export type Ticket = {
 	originName: string;
 	destination: string;
 	destinationName: string;
-	departureDate: string;
+	departureDate: Date;
 	departureTime: string;
-	arrivalDate: string;
+	arrivalDate: Date;
+	arrivalTime: string;
 	carrier: string;
 	stops: number;
 	price: number;

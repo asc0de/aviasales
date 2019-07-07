@@ -1,0 +1,24 @@
+.flight-row-container {
+    flex: 1 1 100%;
+}
+
+.flight-row {
+    width: 100%;
+}
+
+.flight-row-line {
+    border-top: 1px solid #D2D5D6;
+    width: 100%;
+    flex: 1 1 100%;
+}
+
+.airplane {
+    height: 16px;
+    width: 16px;
+}
+
+.stops-title {
+    color: #D2D5D6;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}

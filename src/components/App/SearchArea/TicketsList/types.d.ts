@@ -2,7 +2,7 @@ import {setTickets, setTicketsFetchStatus} from '../../../../actions/ticket';
 
 import {Ticket} from '../../../../types/models';
 
-import {FetchStatus} from '../../../../enums/common';
+import {Currency, FetchStatus} from '../../../../enums/common';
 
 export type TicketListDispatchProps = {
 	setTickets: typeof setTickets;
@@ -12,6 +12,7 @@ export type TicketListDispatchProps = {
 export type TicketListStateProps = {
 	tickets: Ticket[];
 	ticketsFetchStatus: FetchStatus;
+	ticketsCurrency: Currency;
 	rate: number;
 };
 

@@ -1,0 +1,22 @@
+.ticket {
+    transition: box-shadow 100ms ease-in-out;
+}
+
+.ticket:hover {
+    box-shadow: 0 10px 8px rgba(91, 137, 164, 0.25);
+}
+
+.selling-area {
+    border-right: #ECEFF1 1px solid;
+    padding: 1em;
+}
+
+.info-area {
+    flex: 1 1 100%;
+    padding: 2em;
+}
+
+.logo {
+    margin: 1em 1em 2em 1em;
+}
+

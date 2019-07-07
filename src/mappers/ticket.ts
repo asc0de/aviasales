@@ -10,9 +10,10 @@ export const mapTicket = (ticketDto: TicketDto): Ticket => {
 		originName: ticketDto.origin_name,
 		destination: ticketDto.destination,
 		destinationName: ticketDto.destination_name,
-		departureDate: ticketDto.departure_date,
+		departureDate: new Date(ticketDto.departure_date),
 		departureTime: ticketDto.departure_time,
-		arrivalDate: ticketDto.arrival_date,
+		arrivalDate: new Date(ticketDto.arrival_date),
+		arrivalTime: ticketDto.arrival_time,
 		carrier: ticketDto.carrier,
 		stops: ticketDto.stops,
 		price: ticketDto.price

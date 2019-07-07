@@ -1,7 +1,7 @@
 /**
  * Склоняет слово "пересадки"
  */
-export const pluralizeHops = (hops: number) => {
+export const pluralizeStops = (hops: number) => {
 	if (hops === -1) return 'Все';
 	if (hops === 0) return 'Без пересадок';
 	if (hops === 1) return `${hops} пересадка`;

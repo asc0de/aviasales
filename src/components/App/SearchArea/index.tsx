@@ -18,7 +18,7 @@ export const SearchArea: React.FC = () => (
 		className={styles['search-area']}
 	>
 		<LogoContainer />
-		<FlexWrapper className={styles['search-area-content']} alignItems="start">
+		<FlexWrapper className={styles['search-area-content']} alignItems="flex-start">
 			<SearchSettingsCard />
 			<TicketsList />
 		</FlexWrapper>

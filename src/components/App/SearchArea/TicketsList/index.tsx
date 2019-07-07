@@ -16,6 +16,7 @@ import {getSortedAndFilteredTickets, getTicketsCurrency, getTicketsFetchStatus} 
 import {getCurrencyRate} from '../../../../reducers/currency';
 
 import {FetchStatus} from '../../../../enums/common';
+import {SpinnerSize} from '../../../Shared/Spinner/config';
 
 import {isComplete, isError, isLoading} from '../../../../helpers';
 
@@ -30,6 +31,7 @@ const mapStateToProps: MapStateToProps<
 > = (state: CommonState) => ({
 	tickets: getSortedAndFilteredTickets(state, 'price'),
 	ticketsFetchStatus: getTicketsFetchStatus(state),
+	ticketsCurrency: getTicketsCurrency(state),
 	rate: getCurrencyRate(state, getTicketsCurrency(state))
 });
 
@@ -53,6 +55,7 @@ export const TicketsList = connect(
 	setTicketsFetchStatus,
 	tickets,
 	ticketsFetchStatus,
+	ticketsCurrency,
 	rate
 }) => {
 	useEffect(() => {
@@ -72,6 +75,7 @@ export const TicketsList = connect(
 				key={index}
 				ticket={ticket}
 				rate={rate}
+				currency={ticketsCurrency}
 			/>
 		));
 
@@ -79,7 +83,7 @@ export const TicketsList = connect(
 		<FlexWrapper flexDirection="column" alignItems="stretch" className={styles['tickets-list']}>
 			{isLoading(ticketsFetchStatus) && (
 				<FlexWrapper alignItems="center" className={styles['loader-container']}>
-					<Spinner />
+					<Spinner size={SpinnerSize.M}/>
 				</FlexWrapper>
 			)}
 			{isError(ticketsFetchStatus) && <span>Извините, что-то пошло не так :/</span>}

@@ -86,7 +86,7 @@ export const HopFilters = connect(
 	const buildCheckboxFiltersList = (): React.ReactNode[] => {
 		return HOP_FILTERS_ITEMS.map(({label, filter}) => (
 			<HopFilter
-				key={filter.value}
+				key={filter.value as string}
 				label={label}
 				filter={filter}
 				checked={isIncludesFilter(filter)}
