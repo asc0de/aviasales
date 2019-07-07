@@ -36,8 +36,8 @@ export const Ticket: React.FC<TicketProps> = ({ticket, rate, currency}) => {
 	const actualPrice = price * rate;
 
 	return (
-		<Card className={styles.ticket}>
-			<FlexWrapper alignItems="stretch">
+		<Card className={styles['ticket-wrapper']}>
+			<FlexWrapper alignItems="stretch" className={styles.ticket}>
 				<FlexWrapper flexDirection="column" className={styles['selling-area']}>
 					<AirlineLogo iata={carrier} className={styles.logo}/>
 					<Button onClick={() => {}}>{`Купить за ${displayCurrency(actualPrice, currency)}`}</Button>
@@ -48,23 +48,23 @@ export const Ticket: React.FC<TicketProps> = ({ticket, rate, currency}) => {
 					alignItems="stretch"
 					className={styles['info-area']}
 				>
-					<FlexWrapper >
-					<FlightInfo
-						align={FlightInfoAlign.Left}
-						date={departureDate}
-						time={departureTime}
-						city={origin}
-						cityName={originName}
-					/>
-					<FlightRow stops={stops}/>
-					<FlightInfo
-						align={FlightInfoAlign.Right}
-						date={arrivalDate}
-						time={arrivalTime}
-						city={destination}
-						cityName={destinationName}
-					/>
-				</FlexWrapper>
+					<FlexWrapper className={styles['info-area-container']}>
+						<FlightInfo
+							align={FlightInfoAlign.Left}
+							date={departureDate}
+							time={departureTime}
+							city={origin}
+							cityName={originName}
+						/>
+						<FlightRow stops={stops}/>
+						<FlightInfo
+							align={FlightInfoAlign.Right}
+							date={arrivalDate}
+							time={arrivalTime}
+							city={destination}
+							cityName={destinationName}
+						/>
+					</FlexWrapper>
 				</FlexWrapper>
 			</FlexWrapper>
 		</Card>

@@ -1,5 +1,6 @@
 .flight-row-container {
     flex: 1 1 100%;
+    margin: 0.5em 0;
 }
 
 .flight-row {
@@ -21,4 +22,10 @@
     color: #D2D5D6;
     text-transform: uppercase;
     font-size: 0.8em;
+}
+
+@media (max-width: 980px) {
+    .stops-title {
+        font-size: 0.7em;
+    }
 }

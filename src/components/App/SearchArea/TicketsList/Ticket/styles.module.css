@@ -1,8 +1,10 @@
-.ticket {
+.ticket-wrapper {
     transition: box-shadow 100ms ease-in-out;
+    min-width: 280px;
+    max-width: 1000px;
 }
 
-.ticket:hover {
+.ticket-wrapper:hover {
     box-shadow: 0 10px 8px rgba(91, 137, 164, 0.25);
 }
 
@@ -18,5 +20,21 @@
 
 .logo {
     margin: 1em 1em 2em 1em;
+}
+
+@media (max-width: 980px) {
+    .info-area {
+        padding: 1em;
+    }
+
+    .info-area-container {
+        flex-direction: column !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .ticket {
+        flex-direction: column-reverse !important;
+    }
 }
 
