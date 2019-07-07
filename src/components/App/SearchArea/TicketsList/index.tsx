@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect, MapDispatchToProps, MapStateToProps} from 'react-redux';
 
+import styles from './styles.module.css';
+
 import {TicketListDispatchProps, TicketListOwnProps, TicketListProps, TicketListStateProps} from './types';
 import {Ticket} from '../../../../types/models';
 import {CommonState} from '../../../../types/states';
@@ -10,7 +12,7 @@ import {TicketService} from '../../../../services';
 
 import {setTickets, setTicketsFetchStatus} from '../../../../actions/ticket';
 
-import {getSortedTickets, getTicketsFetchStatus} from '../../../../reducers/ticket';
+import {getSortedAndFilteredTickets, getTicketsFetchStatus} from '../../../../reducers/ticket';
 
 import {FetchStatus} from '../../../../enums/common';
 
@@ -25,7 +27,7 @@ const mapStateToProps: MapStateToProps<
 	TicketListOwnProps,
 	CommonState
 > = (state: CommonState) => ({
-	tickets: getSortedTickets(state),
+	tickets: getSortedAndFilteredTickets(state, 'price'),
 	ticketsFetchStatus: getTicketsFetchStatus(state)
 });
 
@@ -60,7 +62,7 @@ export const TicketsList = connect(
 		tickets.map((ticket: Ticket, index: number) => <TicketComponent ticket={ticket} key={index}/>);
 
 	return (
-		<FlexWrapper flexDirection="column">
+		<FlexWrapper flexDirection="column" alignItems="stretch" className={styles['tickets-list']}>
 			{isLoading(ticketsFetchStatus) && <Spinner />}
 			{isError(ticketsFetchStatus) && <span>Извините, что-то пошло не так :/</span>}
 			{isComplete(ticketsFetchStatus) && buildTicketList(tickets)}

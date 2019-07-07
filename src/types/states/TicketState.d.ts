@@ -1,4 +1,6 @@
 import {Ticket} from '../models';
+import {ClientFilter} from '../common';
+
 import {FetchStatus} from '../../enums/common';
 
 /**
@@ -7,4 +9,5 @@ import {FetchStatus} from '../../enums/common';
 export type TicketState = {
 	tickets: Ticket[];
 	fetchStatus: FetchStatus;
+	filters: ClientFilter<Ticket>[];
 };

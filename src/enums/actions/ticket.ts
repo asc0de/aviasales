@@ -3,5 +3,8 @@
  */
 export enum TicketAction {
 	SetTickets = 'SetTickets',
-	SetTicketsFetchStatus = 'SetTicketsFetchStatus'
+	SetTicketsFetchStatus = 'SetTicketsFetchStatus',
+	AddTicketsFilters = 'AddTicketFilters',
+	SetTicketsFilters = 'SetTicketsFilters',
+	RemoveTicketFilters = 'RemoveTicketFilters'
 }

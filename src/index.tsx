@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +10,15 @@ import {reducers} from './reducers';
 
 import {App} from './components/App';
 
-const store = createStore(reducers);
+const middlewares = [];
+if (process.env.NODE_ENV === 'development') {
+	// Избегает добавление логгера в продакшн
+	const { logger } = require('redux-logger');
+
+	middlewares.push(logger);
+}
+
+const store = compose(applyMiddleware(...middlewares))(createStore)(reducers);
 
 ReactDOM.render(
 	<Provider store={store}>

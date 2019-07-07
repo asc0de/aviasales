@@ -1,0 +1,41 @@
+.hop-filter {
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #909090;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    transition: background-color 200ms;
+}
+
+.hop-filter:hover {
+    background-color: #f2fcff;
+}
+
+.only-action {
+    color: #2196f3;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 200ms;
+    text-transform: uppercase;
+    justify-self: end;
+    transition: color .15s ease-out, transform .15s ease-out, opacity .15s ease-out;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.only-action:hover {
+    color: #ff9d1b;
+}
+
+.text-container {
+    width: calc(100% - 3.5em);
+}
+
+.hop-filter:hover .only-action {
+    transform: translateY(0);
+    opacity: 1;
+}
+
